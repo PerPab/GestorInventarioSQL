@@ -10,9 +10,11 @@
 
 <img src="https://github.com/PerPab/GestorInventarioSQL/blob/master/image1.jpg" ></img>
 
+<img src="https://github.com/PerPab/GestorInventarioSQL/blob/master/image3.jpg" ></img>
+
 <img src="https://github.com/PerPab/GestorInventarioSQL/blob/master/image2.jpg" ></img>
 
-<img src="https://github.com/PerPab/GestorInventarioSQL/blob/master/image3.jpg" ></img>
+
 
 
 
