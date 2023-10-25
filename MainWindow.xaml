@@ -1,0 +1,162 @@
+﻿<Window x:Class="CRUDinventario.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CRUDinventario"
+        mc:Ignorable="d"
+        Title="Gestor de Inventario" Height="650" Width="800"
+        Background="#FFFAFAFA"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+
+        <Grid.RowDefinitions>
+
+            <RowDefinition Height="3*">
+            </RowDefinition>
+
+            <RowDefinition Height="4*">
+            </RowDefinition>
+
+            <RowDefinition Height="*">
+            </RowDefinition>
+            <RowDefinition Height="20">
+            </RowDefinition>
+
+
+
+        </Grid.RowDefinitions>
+
+
+
+        <Grid Grid.Row="0" Width="Auto">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0">
+                <Label VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="MS Reference Sans Serif" FontSize="18" FontWeight="Bold">Listado de Productos</Label>
+            </Grid>
+
+            <Grid VerticalAlignment="Center"  Grid.Row="2" Width="600" Height="Auto" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                       FontFamily="MS Reference Sans Serif" FontSize="15" Margin="5">Buscar por Código</Label>
+                <TextBox Name="textboxcodigo" Background="#F9F3CC" Grid.Column="1" Margin="5" FontFamily="MS Reference Sans Serif" Height="30" FontSize="18"/>
+                <Button Name="btncodigo" Grid.Column="2" Margin="5" FontFamily="MS Reference Sans Serif" Click="btncodigo_Click" Width="30" Height="30" HorizontalAlignment="Left" Background="Transparent">
+                    <Image Source="/search.png" Width="31" Height="31" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
+                </Button>
+
+
+
+            </Grid>
+
+            <Grid VerticalAlignment="Center"  Grid.Row="3" Width="600" Height="Auto" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                       FontFamily="MS Reference Sans Serif" FontSize="15" Margin="5">Buscar por Lote</Label>
+                <TextBox Grid.Column="1" Name="textoLote" Background="#F9F3CC" Margin="5" FontFamily="MS Reference Sans Serif" Height="30" FontSize="18"/>
+                <Button x:Name="btnLote" Grid.Column="2" Margin="5" FontFamily="MS Reference Sans Serif" Click="btnLote_Click" Background="Transparent" Width="30" Height="30" HorizontalAlignment="Left">
+                    <Image Source="/search.png" Width="31" Height="31" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
+                </Button>
+
+
+
+            </Grid>
+
+            <Grid VerticalAlignment="Center"  Grid.Row="4" Width="600" Height="Auto" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                       FontFamily="MS Reference Sans Serif" FontSize="15" 
+                       Margin="5">Buscar por Ubicación</Label>
+                <TextBox Grid.Column="1" Name="textoUbicacion" Background="#F9F3CC" Margin="5" FontFamily="MS Reference Sans Serif" Height="30" FontSize="18"/>
+                <Button Grid.Column="2" Name="btnUbicacion" Margin="5" FontFamily="MS Reference Sans Serif" Click="btnUbicacion_Click" Width="31" Height="31" HorizontalAlignment="Left" Background="Transparent">
+                    <Image Source="/search.png" Width="31" Height="31" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
+                </Button>
+
+
+
+            </Grid>
+
+        </Grid>
+
+        <Grid Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <ListView ItemsSource="{Binding}" Background="#F9F3CC" Grid.Column="0" Width="720" BorderBrush="Black" BorderThickness="2" Margin="5" Name="listadoPrincipal" Loaded="listadoPrincipal_Loaded"  FontSize="14"  HorizontalAlignment="Center" HorizontalContentAlignment="Center"  MouseDoubleClick="listadoPrincipal_MouseDoubleClick" FontWeight="Bold" SelectionChanged="listadoPrincipal_SelectionChanged" >
+                <ListView.View>
+                    <GridView >
+                        <GridViewColumn Header="Nombre" Width="180" DisplayMemberBinding= "{Binding nombre_producto}" />
+                        <GridViewColumn Header="Código" Width="180" DisplayMemberBinding= "{Binding codigo_producto}"/>
+                        <GridViewColumn Header="Lote" Width="180" DisplayMemberBinding= "{Binding lote_producto}"/>
+                        <GridViewColumn Header="Ubicación" Width="180"  DisplayMemberBinding= "{Binding ubicacion}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+        </Grid>
+
+        <!--<StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">-->
+
+        <Grid Grid.Row="2" Width="700" HorizontalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+
+            </Grid.ColumnDefinitions>
+
+
+
+            <Button Grid.Column="1" BorderThickness="2" Background="#FFA0E9FF" Width="90" Height="28" FontSize="12"  FontFamily="MS Reference Sans Serif" Click="Button_Click_1" Margin="2" Foreground="#FF0C0404" FontWeight="Bold">Listar
+
+            </Button>
+
+            <Button Grid.Column="2" BorderThickness="2" Width="90" Background="#FFA0E9FF" Height="28" FontSize="12"  FontFamily="MS Reference Sans Serif" Margin="2" Click="Button_Click" FontWeight="Bold">Agregar
+
+            </Button>
+
+            <Button Grid.Column="3" BorderThickness="2" Width="90" Height="28" Background="#FFA0E9FF" FontSize="12"  FontFamily="MS Reference Sans Serif" Margin="2" Name="btnEliminar" Click="btnEliminar_Click" FontWeight="Bold" IsEnabled="False">Eliminar
+
+            </Button>
+
+            <Button Grid.Column="4" BorderThickness="2" Width="90" Height="28" Background="#FFA0E9FF" FontSize="12"  FontFamily="MS Reference Sans Serif" Margin="2" Name="btnAbrir" Click="btnAbrir_Click" FontWeight="Bold">Abrir
+
+            </Button>
+
+
+        </Grid>
+
+
+
+        <!--</StackPanel>-->
+
+
+    </Grid>
+</Window>
