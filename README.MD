@@ -1,4 +1,4 @@
-<h1>Hardware Monitor 👨‍💻</h1>
+<h1>Gestor de Inventario SQLite 💽</h1>
 
 </br>
 
